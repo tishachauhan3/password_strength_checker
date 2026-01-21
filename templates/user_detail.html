@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h2>🔐 Password Strength Checker</h2>
+
+    <form method="POST" action="/check_user">
+
+        <input type="text" name="first_name" placeholder="First Name">
+
+        <input type="text" name="last_name" placeholder="Last Name (optional)">
+
+        <input type="date" name="birth_date">
+
+        <!-- PASSWORD FIELD -->
+        <div class="password-box">
+            <input type="password" name="password" id="password" placeholder="Enter Password" required>
+            <button type="button" class="toggle-btn" onclick="togglePassword()">👁</button>
+        </div>
+
+        <!-- Strength Bar -->
+        <div class="progress">
+            <div id="strength-bar"></div>
+        </div>
+        <div id="strength-text"></div>
+
+        <!-- MODE -->
+        <div class="mode">
+            <p>Check Mode</p>
+            <div class="mode-options">
+                <label>
+                    <input type="radio" name="mode" value="normal" checked>
+                    Normal
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="extreme">
+                    Extreme
+                </label>
+            </div>
+        </div>
+
+        <button type="submit">Check Password</button>
+
+    </form>
+
+    {% if result %}
+        <div class="result">{{ result }}</div>
+    {% endif %}
+</div>
+
+<script>
+function togglePassword() {
+    const pw = document.getElementById("password");
+    pw.type = pw.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

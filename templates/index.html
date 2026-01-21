@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PW Tester</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="card">
+    <h2>🔐 PW Tester</h2>
+
+    <form method="post">
+        <label>Password</label><br>
+
+        <input type="password" name="password" placeholder="Enter password" required>
+        <br><br>
+
+        <button type="submit">Check</button>
+    </form>
+
+    {% if strength %}
+        <p class="result">Password Strength: <b>{{ strength }}</b></p>
+    {% endif %}
+</div>
+
+</body>
+</html>
